@@ -211,8 +211,7 @@
         <!-- end wedding-couple-section -->
 
         <!-- start count-down-section -->
-        <!-- <section class="count-down-section section-padding parallax" data-bg-image="images/countdown-bg.jpg" data-speed="7"> -->
-            <section class="count-down-section section-padding parallax" data-speed="7">
+        <section class="count-down-section section-padding parallax" data-bg-image="images/countdown-bg.jpg" data-speed="7">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
@@ -233,7 +232,7 @@
         
 
         <!-- start cta -->
-        <section class="cta section-padding parallax" data-speed="7">
+        <section class="cta section-padding parallax" data-bg-image="images/cta-bg.jpg" data-speed="7">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
@@ -297,28 +296,20 @@
         <!-- end events-section -->
 
         <!-- start inportant-people-section -->
-        <section class="important-people-section section-padding" id="people">
+        <!-- <section class="inportant-people-section section-padding" id="people">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="section-title">
                             <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
-                            <h2>People Who Are Coming...</h2>
+                            <h2>People Who Are Comming...</h2>
                         </div>
                     </div>
-                </div>
-        
-                <!-- List of people who are coming -->
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <ul id="namesList">
-                            <!-- The names will be populated here -->
-                        </ul>
-                    </div>
-                </div>
+                </div> 
+
+                
             </div> 
-        </section>
-        
+        </section> -->
         <!-- end inportant-people-section -->
 
         <!-- start gallery-section -->
@@ -353,7 +344,7 @@
         <!-- end gallery-section -->
 
         <!-- start rsvp-section -->
-<section class="rsvp-section section-padding parallax" data-speed="7" id="rsvp">
+<section class="rsvp-section section-padding parallax" data-bg-image="images/rsvp-bg.jpg" data-speed="7" id="rsvp">
     <div class="container">
         <div class="row">
             <div class="col col-xs-12">
@@ -395,7 +386,7 @@
                     </div>
                     <div class="col-md-12 mb-4 submit-btn">
                         <button type="submit" class="submit">Submit</button>
-                        <div id="loader" style="display: none;">
+                        <div id="loadingIndicator" style="display: none;">
                             <i class="fa fa-spinner fa-spin"></i> Submitting...
                         </div>
                     </div>
@@ -449,114 +440,65 @@
     <!-- Custom script for this template -->
     <script src="js/script.js"></script>
 
-<!-- Content Posting to excel -->
+
     <script>
         function submitForm(event) {
-         event.preventDefault();
- 
-         const submitBtn = document.querySelector('.submit');
-         const loader = document.getElementById('loader');
-         const successMessage = document.getElementById('successMessage');
-         const errorMessage = document.getElementById('errorMessage');
- 
-         // Check if elements exist to avoid "null" errors
-         if (!submitBtn || !loader || !successMessage || !errorMessage) {
-             console.error("One or more elements could not be found in the DOM.");
-             return;
-         }
- 
-         // Show loading state
-         submitBtn.style.display = 'none';
-         loader.style.display = 'inline-block';
- 
-         const form = document.getElementById('rsvpForm');
-         const formData = new FormData(form);
- 
-         const formObject = {};
-         formData.forEach((value, key) => {
-             formObject[key] = value;
-         });
- 
-         // Log the form data to the console
-        console.log('Form data being sent:', formObject);
-
-        // Optionally, display the sent data in the success message
-        // successMessage.innerHTML = `The following data has been sent: <pre>${JSON.stringify(formObject, null, 2)}</pre>`;
-        
-         const scriptURL = 'https://script.google.com/macros/s/AKfycbyuEelosoBhA2KVlbodXoOv2XBF91OR89slOg22xSYahUWNPxFogRYLz8SCpy7IWw9v/exec';
- 
-         fetch(scriptURL, {
-             method: 'POST',
-             mode: 'no-cors',
-            //  mode: 'cors',  // Change from 'no-cors' to 'cors'
-             headers: {
-             'Content-Type': 'application/json'
-             },
-             body: JSON.stringify(formObject)
-         })
-         .then(() => {
-             // Show success message
-             successMessage.style.display = 'block';
-             errorMessage.style.display = 'none';
-             form.reset();
-             submitBtn.style.display = 'block';
-             loader.style.display = 'none';
-         })
-         .catch(() => {
-             // Show error message
-             errorMessage.style.display = 'block';
-             successMessage.style.display = 'none';
-             submitBtn.style.display = 'block';
-             loader.style.display = 'none';
-         });
-     }
-     </script>
-<!-- Content Retriving from excel -->    
-<script>
-    // Function to fetch names from Google Apps Script
-    function fetchNames() {
-      const namesList = document.getElementById('namesList'); // The element where you want to display the names
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbyONfUL3aZXpJ_6q2Hj66GycMrrFrlQIeOQSQYPDehOEpj2EdP31s0UPIbewae7aaqj/exec'; // Your Google Apps Script URL
-
-      // Fetch the data from the Apps Script
-      fetch(scriptURL, { method: 'GET', mode: 'no-cors' })  // Use 'cors' mode
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-          }
-          return response.json();  // Parse the JSON from the response
-        })
-        .then(names => {
-          // Clear existing names
-          namesList.innerHTML = '';
-
-          // Check if there are no names
-          if (names.length === 0) {
-            const noNamesMessage = document.createElement('li');
-            noNamesMessage.textContent = 'No names found.';
-            namesList.appendChild(noNamesMessage);
-            return;
-          }
-
-          // Add names to the list
-          names.forEach(name => {
-            const listItem = document.createElement('li');
-            listItem.textContent = name;
-            namesList.appendChild(listItem);
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching names:', error);
-          const errorMessage = document.createElement('li');
-          errorMessage.textContent = 'Error fetching names. Please try again later.';
-          namesList.appendChild(errorMessage);
-        });
-    }
-
-    // Call fetchNames to load the names when the page loads
-    window.onload = fetchNames;
-  </script>
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit');
+            const loader = document.querySelector('#loadingIndicator');
+            submitBtn.style.display = 'none';
+            loader.style.display = 'inline-block';
+            
+            // Get form data
+            const form = document.getElementById('rsvpForm');
+            const formData = new FormData(form);
+            
+            // Convert FormData to object
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            // Google Apps Script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxnSqgw0z-_X8YomQ9JCIbuD8JKTSqIvy29k_pVWBaiaD5BIFfWigd9LpNi8Fc8drzP1w/exec';
+            
+            // Send the data
+            fetch(scriptURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json()) // Assuming the script returns JSON data
+            .then(data => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+                
+                // Reset form
+                form.reset();
+                
+                // Reset UI state
+                submitBtn.style.display = 'block';
+                loader.style.display = 'none';
+            })
+            .catch(error => {
+                // Show error message
+                console.error('Error:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                
+                // Reset UI state
+                submitBtn.style.display = 'block';
+                loader.style.display = 'none';
+            });
+        }
+    </script>
+    
+    
     
 </body>
 
