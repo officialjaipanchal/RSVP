@@ -755,6 +755,17 @@ a:focus {
   left: 0;
   top: 0;
   z-index: 1000;
+  /* transition: opacity 0.5s ease;
+  animation: fadeOut 5.5s forwards; */
+}
+
+.preloader .icon img {
+  width: 55px; /* Adjust size as needed */
+  height: 55px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .preloader .inner {
