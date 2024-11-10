@@ -4181,4 +4181,27 @@ a:focus {
   align-items: center;
 }
 
+.rsvp-info-icon {
+  font-size: 18px;
+  color: #5e9a8e;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#rsvp-help-message {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: -9px; /* Position the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  display: none;
+  z-index: 10;
+  text-align: center; /* Center-align text inside the tooltip */
+}
+
+
 /*# sourceMappingURL=style.css.map 

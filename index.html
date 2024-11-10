@@ -412,9 +412,18 @@
                     <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
                     <!-- <h2>Join our Wedding</h2> -->
                     <h2>Invited to the Wedding Reception </h2>
+                     <!-- Info icon for RSVP help -->
+                     <i class="fa fa-info-circle rsvp-info-icon" title="Click for RSVP help"></i>
+                    
+                     <!-- Hidden RSVP Help Message -->
+                     <div id="rsvp-help-message" style="display: none;">
+                        To make any changes to your RSVP, please call this number: 
+                        <a href="tel:+14806652332">Click To Call</a>
+                    </div>
                 </div>
             </div>
         </div> <!-- end section-title -->
+        
 
         <div class="row content justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -451,6 +460,7 @@
                             <i class="fa fa-spinner fa-spin"></i> Submitting...
                         </div>
                     </div>
+                   
                     <div class="col-md-12">
                         <div id="successMessage" style="display: none;" class="alert alert-success">
                             Thank you for your response!
@@ -609,7 +619,13 @@
     // Initial fetch and render data
     fetchData();
 </script>
-    
+<script>
+    document.querySelector('.rsvp-info-icon').addEventListener('click', function() {
+    const helpMessage = document.getElementById('rsvp-help-message');
+    helpMessage.style.display = helpMessage.style.display === 'none' ? 'block' : 'none';
+});
+
+</script>
 </body>
 
 </html>
