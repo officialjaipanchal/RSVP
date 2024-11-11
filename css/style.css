@@ -36,7 +36,7 @@ html {
 body {
   font-family: "Dosis", sans-serif;
   background-color: #fff;
-  font-size: 18px;
+  font-size: 24px;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -48,14 +48,14 @@ body {
 
 @media (max-width: 1199px) {
   body {
-    font-size: 17px;
+    font-size: 20px;
     font-style: 0.94444rem;
   }
 }
 
 @media (max-width: 991px) {
   body {
-    font-size: 16px;
+    font-size: 24px;
     font-style: 0.88889rem;
   }
 }
@@ -467,7 +467,9 @@ a:focus {
 }
 
 .section-title h2, .section-title-white h2 {
-  font-family: "Great Vibes", cursive;
+  /* font-family: "Great Vibes", cursive; */
+  font-family: "Dosis", sans-serif;
+
   background-color: rgba(94, 154, 142, 0.1);
   font-size: 46px;
   font-size: 2.55556rem;
@@ -1158,12 +1160,26 @@ a:focus {
   margin: 0;
   text-shadow: 1px 1px 2px #999999;
 }
-.site-header .navbar .navbar-nav .nav-item .nav-link {
+/* .site-header .navbar .navbar-nav .nav-item .nav-link {
   color: #413d3d;
   font-size: 1rem;
   font-weight: 600;
   padding: 25px 17px;
   text-transform: uppercase;
+} */
+ 
+.site-header .navbar .navbar-nav .nav-item .nav-link {
+  color: #fff; /* White text color for better contrast */
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 25px; /* Reduced padding for button-like proportions */
+  text-transform: uppercase;
+  background-color: #413d3d; /* Dark background for the button */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* No border */
+  display: inline-block; /* Makes it behave like a button */
+  text-align: center; /* Centers the text */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 
@@ -1521,7 +1537,8 @@ a:focus {
 }
 
 .header-style-1 .couple-logo h1, .header-style-2 .couple-logo h1 {
-  font-family: "Great Vibes", cursive;
+  /* font-family: "Great Vibes", cursive; */
+  font-family: "Dosis", sans-serif;
   font-size: 35px;
   font-size: 1.94444rem;
   margin: 0;
@@ -1802,7 +1819,8 @@ a:focus {
 }
 
 .hero .wedding-announcement .couple-name-merried-text h2 {
-  font-family: "Great Vibes", cursive;
+  /* font-family: "Great Vibes", cursive; */
+  font-family: "Dosis", sans-serif;
   font-size: 90px;
   font-size: 5rem;
   color: #fff;
@@ -2361,7 +2379,8 @@ a:focus {
 }
 
 .wedding-couple-section .details .signature {
-  font-family: "Great Vibes", cursive;
+  /* font-family: "Great Vibes", cursive; */
+  font-family: "Dosis", sans-serif;
   font-size: 28px;
   font-size: 1.55556rem;
   display: block;
@@ -3403,6 +3422,17 @@ a:focus {
 
 .gallery-section .video-play-btn:hover i {
   background: #5e9a8e;
+}
+
+/*  video card container */
+.grid.wedding.ceremony.video-container {
+  /* border: 5px solid #ddd; Adjust border color and thickness as needed */
+  border-radius: 15px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensures the video doesn't overflow the rounded corners */
+}
+
+.grid.wedding.ceremony.video-container .img {
+  border-radius: 15px; /* Rounded corners for the video itself */
 }
 
 /*--------------------------------------------------------------
